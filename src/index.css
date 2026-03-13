@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Prevent downloading/copying portfolio media */
+img, video, picture, svg {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
