@@ -112,19 +112,61 @@ const App = () => {
     if (!isDesktop) setActiveProject(null);
   }, [isDesktop]);
 
+  const hideNativeCursor = !isTouch && !isProjectPage;
+  useEffect(() => {
+    if (!hideNativeCursor) {
+      document.documentElement.removeAttribute('data-hide-native-cursor');
+      return;
+    }
+    const ATTR = 'data-hide-native-cursor';
+    const apply = () => document.documentElement.setAttribute(ATTR, '');
+    const reapply = () => {
+      document.documentElement.removeAttribute(ATTR);
+      requestAnimationFrame(() => requestAnimationFrame(apply));
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') reapply();
+    };
+    const onFocus = () => reapply();
+    let lastMove = 0;
+    const THROTTLE_MS = 80;
+    const onPointerMove = () => {
+      const now = Date.now();
+      if (now - lastMove < THROTTLE_MS) return;
+      lastMove = now;
+      reapply();
+    };
+    apply();
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('pointermove', onPointerMove, { passive: true });
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('pointermove', onPointerMove);
+      document.documentElement.removeAttribute(ATTR);
+    };
+  }, [hideNativeCursor, viewMode, navSection]);
+
   // Fonts loaded via index.html (Aspekta from Fontshare)
 
-  const showGlassCursor = !isTouch && !isProjectPage && mouseOverObject;
-  const showDotCursor = !isTouch && !showGlassCursor;
+  const showDotCursor = !isTouch && !isProjectPage;
+  const cursorTintColor = activeProject && navSection === 'work' && !isProjectPage
+    ? (activeProject.cursorColor ?? activeProject.heroMedia?.backgroundColor ?? activeProject.color)
+    : null;
 
   return (
     <div
       className={`min-h-screen ${BACKGROUND_COLOR.tailwind} text-slate-900 ${TYPOGRAPHY.font} overflow-hidden ${
-        !isTouch && (showGlassCursor || showDotCursor) ? 'cursor-none' : ''
+        !isTouch && showDotCursor ? 'cursor-none' : ''
       }`}
     >
       {!isTouch && (
-        <CustomCursor mousePos={mousePos} showGlass={showGlassCursor} showDot={showDotCursor} />
+        <CustomCursor
+          mousePos={mousePos}
+          showDot={showDotCursor}
+          tintColor={cursorTintColor}
+        />
       )}
 
       <Nav
@@ -249,11 +291,6 @@ const App = () => {
                       }}
                       onClick={() => handleProjectClick(p)}
                     >
-                      <div
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-150"
-                        style={{ backgroundColor: activeProject?.id === p.id ? (p.slug === 'onetutor' ? '#4F46E5' : p.color) : 'transparent' }}
-                        aria-hidden
-                      />
                       <p className={`${TYPOGRAPHY.caption} text-[13px] text-slate-700 normal-case leading-snug`}>
                         {p.name} — {p.description}
                       </p>

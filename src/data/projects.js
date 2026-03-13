@@ -15,6 +15,8 @@
  * - heroMedia.objectFit: 'contain' (preserve aspect) or 'cover' (fill, may crop)
  * - heroMedia.awardBadge: optional path to award/badge image (e.g. '/media/onetutor-award.png')
  *
+ * - cursorColor: optional hex for custom cursor tint on hover (falls back to heroMedia.backgroundColor or color)
+ *
  * Projects without heroMedia (e.g. OneTutor, Tenmin): list view shows a color block using project.color.
  * For projects with media but no heroMedia, add listViewMedia (path) and listViewMediaBackgroundColor (optional).
  *
@@ -81,6 +83,7 @@ export const PROJECTS = [
     description: 'Reimagining the role of Hyundai pixels',
     timeline: '2024 — 4 WEEKS',
     color: '#7c3aed',
+    cursorColor: '#FF00FF',
     pos: [-0.5, -0.8, 2.8],
     complexity: 1
   },
@@ -108,6 +111,7 @@ export const PROJECTS = [
     description: 'Hyper-personalizing automotive UX',
     timeline: '2023, 2024 — 3 MONTHS',
     color: '#3b82f6',
+    cursorColor: '#DDFF00',
     pos: [3.2, -0.5, 0.8],
     complexity: 1
   },
@@ -135,6 +139,7 @@ export const PROJECTS = [
     description: 'Bringing AI to higher education',
     timeline: '2025, 2026 — 4 MONTHS, ONGOING',
     color: '#60a5fa',
+    cursorColor: '#4000FF',
     pos: [2.4, 1.6, -1.0],
     complexity: 5
   },
@@ -162,6 +167,7 @@ export const PROJECTS = [
     description: 'Gamifying language learning with AI',
     timeline: '2025 — 2 MONTHS',
     color: '#c9ffff',
+    cursorColor: '#00FFCC',
     pos: [0.2, 1.8, -2.8],
     complexity: 1
   }

@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+/* Hide native cursor when custom cursor is active (Safari reinforces on interactive elements) */
+[data-hide-native-cursor],
+[data-hide-native-cursor] *,
+[data-hide-native-cursor] a,
+[data-hide-native-cursor] button,
+[data-hide-native-cursor] [role="button"] {
+  cursor: none !important;
+}
+
 /* Prevent downloading/copying portfolio media */
 img, video, picture, svg {
   -webkit-user-drag: none;
-  user-drag: none;
   -webkit-user-select: none;
   user-select: none;
 }
