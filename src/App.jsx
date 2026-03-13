@@ -112,7 +112,7 @@ const App = () => {
     if (!isDesktop) setActiveProject(null);
   }, [isDesktop]);
 
-  const hideNativeCursor = !isTouch && !isProjectPage;
+  const hideNativeCursor = !isTouch;
   useEffect(() => {
     if (!hideNativeCursor) {
       document.documentElement.removeAttribute('data-hide-native-cursor');
@@ -124,10 +124,22 @@ const App = () => {
       document.documentElement.removeAttribute(ATTR);
       requestAnimationFrame(() => requestAnimationFrame(apply));
     };
-    const onVisibilityChange = () => {
-      if (document.visibilityState === 'visible') reapply();
+    let delayTimeoutId = null;
+    const reapplyWithDelay = () => {
+      reapply();
+      if (delayTimeoutId) clearTimeout(delayTimeoutId);
+      delayTimeoutId = setTimeout(() => {
+        reapply();
+        delayTimeoutId = null;
+      }, 120);
     };
-    const onFocus = () => reapply();
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') reapplyWithDelay();
+    };
+    const onFocus = () => reapplyWithDelay();
+    const onPageShow = (e) => {
+      if (e.persisted || document.visibilityState === 'visible') reapplyWithDelay();
+    };
     let lastMove = 0;
     const THROTTLE_MS = 80;
     const onPointerMove = () => {
@@ -139,20 +151,23 @@ const App = () => {
     apply();
     document.addEventListener('visibilitychange', onVisibilityChange);
     window.addEventListener('focus', onFocus);
+    window.addEventListener('pageshow', onPageShow);
     document.addEventListener('pointermove', onPointerMove, { passive: true });
     return () => {
+      if (delayTimeoutId) clearTimeout(delayTimeoutId);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('focus', onFocus);
+      window.removeEventListener('pageshow', onPageShow);
       document.removeEventListener('pointermove', onPointerMove);
       document.documentElement.removeAttribute(ATTR);
     };
-  }, [hideNativeCursor, viewMode, navSection]);
+  }, [hideNativeCursor, viewMode, navSection, location.pathname]);
 
   // Fonts loaded via index.html (Aspekta from Fontshare)
 
-  const showDotCursor = !isTouch && !isProjectPage;
-  const cursorTintColor = activeProject && navSection === 'work' && !isProjectPage
-    ? (activeProject.cursorColor ?? activeProject.heroMedia?.backgroundColor ?? activeProject.color)
+  const showDotCursor = !isTouch;
+  const cursorTintColor = activeProject && navSection === 'work' && !isProjectPage && activeProject.cursorColor
+    ? activeProject.cursorColor
     : null;
 
   return (

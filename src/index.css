@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-/* Hide native cursor when custom cursor is active (Safari reinforces on interactive elements) */
+/* Hide native cursor: transparent 1x1 pixel survives Safari tab focus loss (e.g. after window.open) */
 [data-hide-native-cursor],
 [data-hide-native-cursor] *,
 [data-hide-native-cursor] a,
 [data-hide-native-cursor] button,
 [data-hide-native-cursor] [role="button"] {
-  cursor: none !important;
+  cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=") 1 1, none !important;
 }
 
 /* Prevent downloading/copying portfolio media */

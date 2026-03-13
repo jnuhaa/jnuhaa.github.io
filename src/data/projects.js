@@ -15,7 +15,7 @@
  * - heroMedia.objectFit: 'contain' (preserve aspect) or 'cover' (fill, may crop)
  * - heroMedia.awardBadge: optional path to award/badge image (e.g. '/media/onetutor-award.png')
  *
- * - cursorColor: optional hex for custom cursor tint on hover (falls back to heroMedia.backgroundColor or color)
+ * - cursorColor: hex for custom cursor tint on hover (required for tint; omit for default slate cursor)
  *
  * Projects without heroMedia (e.g. OneTutor, Tenmin): list view shows a color block using project.color.
  * For projects with media but no heroMedia, add listViewMedia (path) and listViewMediaBackgroundColor (optional).
@@ -57,6 +57,7 @@ export const PROJECTS = [
     description: 'Giving young cancer patients a safe space of autonomy',
     timeline: '2024 — 4 MONTHS',
     color: '#fb923c',
+    cursorColor: '#FF4800',
     pos: [-2.8, 0.4, 1.2],
     complexity: 1
   },
@@ -163,7 +164,7 @@ export const PROJECTS = [
     type: 'WAVE',
     sector: 'Conversational AI Platform',
     projectType: 'App UX/UI',
-    projectBrief: 'HHow might we make the review feature fun and engaging so that users stay motivated to study consistently?',
+    projectBrief: 'How might we make the review feature fun and engaging so that users stay motivated to study consistently?',
     description: 'Gamifying language learning with AI',
     timeline: '2025 — 2 MONTHS',
     color: '#c9ffff',
