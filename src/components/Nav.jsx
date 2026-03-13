@@ -27,8 +27,8 @@ const Nav = ({
       : { prev: null, next: null };
   const { prev: prevProject, next: nextProject } = projectNav;
 
-  const isGalleryView = !isDesktop && navSection === 'work' && !isProjectPage && !isImpressumPage;
-  const navBgClass = isGalleryView ? 'bg-transparent' : BACKGROUND_COLOR.tailwind;
+  const useVerticalLayout = !isDesktop;
+  const navBgClass = useVerticalLayout ? 'bg-transparent' : BACKGROUND_COLOR.tailwind;
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-[250] ${navBgClass} min-h-[72px] sm:min-h-0 pt-5 pb-5 px-5 sm:pt-8 sm:pb-8 sm:px-6 md:pt-10 md:pb-10 md:px-8 lg:pt-12 lg:pb-12 lg:pr-12 lg:pl-20 flex justify-between items-center pointer-events-none isolate`}>

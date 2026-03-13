@@ -2,11 +2,12 @@
  * Compact hero-style card for the mobile gallery. Renders video/image, title,
  * and blend effects. Clickable; navigates to project subpage.
  */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getHeroMediaConfig, getHeroMediaTransform } from '../../data/projects.js';
 
 const ProjectHeroCard = ({ project }) => {
+  const videoRef = useRef(null);
   const config = getHeroMediaConfig(project);
   if (!config) {
     const bgColor = project?.color ?? '#94a3b8';
@@ -26,6 +27,29 @@ const ProjectHeroCard = ({ project }) => {
   const mediaSrc = config.src;
   const isGif = mediaSrc?.toLowerCase().endsWith('.gif');
   const isVideo = !isGif && /\.(mp4|webm|ogg)$/i.test(mediaSrc ?? '');
+  const videoSrc = config.src;
+
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+    const video = videoRef.current;
+    const play = () => video.play().catch(() => {});
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) play();
+          else video.pause();
+        });
+      },
+      { rootMargin: '50px', threshold: 0.1 }
+    );
+    observer.observe(video);
+    video.addEventListener('loadeddata', play);
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('loadeddata', play);
+    };
+  }, [isVideo, videoSrc]);
+
   const mediaOverlayStyle =
     config.mediaOverlay && config.mediaOverlay !== 'none'
       ? { mixBlendMode: config.mediaOverlay }
@@ -54,6 +78,7 @@ const ProjectHeroCard = ({ project }) => {
       )}
       {isVideo ? (
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             ...mediaOverlayStyle,

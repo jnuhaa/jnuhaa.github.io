@@ -16,8 +16,8 @@ const PRODUCT_DESIGNER_STICKERS = [
   '/media/sticker-2.png',
   '/media/tenmin-team-2.JPG',
   '/media/sticker-4.png',
-  '/media/onetutor-team-1.jpeg',
-  '/media/tenmin-team-3.JPG',
+  'media/onetutor-team-1.jpeg',
+  'media/tenmin-team-3.JPG',
 ];
 
 const GREETING_SEQUENCE = [

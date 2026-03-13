@@ -82,7 +82,7 @@ const ListViewMediaWindow = ({ project, instant = false }) => {
         <h1
           className="relative font-medium tracking-tight text-center"
           style={{
-            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Nunito", sans-serif',
             fontSize: 'clamp(1.25rem, 4vw, 2.5rem)',
             letterSpacing: '-0.04em',
             mixBlendMode: config.titleBlendMode ?? 'overlay',
