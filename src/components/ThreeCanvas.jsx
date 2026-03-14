@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import {
   DEBOUNCE_DELAY,
@@ -23,6 +23,7 @@ import { createNest, createPixel, createHelix, createTriangle, createWave } from
 const ThreeCanvas = ({ activeProject, setActiveProject, setMouseOverObject, onProjectClick }) => {
   const mountRef = useRef(null);
   const activeProjectRef = useRef(activeProject);
+  const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
     activeProjectRef.current = activeProject;
@@ -38,11 +39,14 @@ const ThreeCanvas = ({ activeProject, setActiveProject, setMouseOverObject, onPr
     const height = mountRef.current.clientHeight;
 
     if (width === 0 || height === 0) {
-      console.warn('ThreeCanvas: Invalid dimensions, will retry on resize', { width, height });
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
           const { width: w, height: h } = entry.contentRect;
-          if (w > 0 && h > 0) resizeObserver.disconnect();
+          if (w > 0 && h > 0) {
+            resizeObserver.disconnect();
+            setRetryKey((k) => k + 1);
+            break;
+          }
         }
       });
       resizeObserver.observe(mountRef.current);
@@ -451,7 +455,7 @@ const ThreeCanvas = ({ activeProject, setActiveProject, setMouseOverObject, onPr
         } catch (e) {}
       }
     };
-  }, [setActiveProject, setMouseOverObject, onProjectClick]);
+  }, [setActiveProject, setMouseOverObject, onProjectClick, retryKey]);
 
   return (
     <div className="relative w-full h-full">

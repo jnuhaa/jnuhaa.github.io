@@ -266,12 +266,12 @@ flowchart TB
               <h3 className={`${TYPOGRAPHY.caption} tracking-[0.18em] uppercase text-slate-500`}>
                 V1_Removing Advanced Review and “Not Sure” box
               </h3>
-              <div className="relative mx-auto aspect-[9/16] w-full max-w-[375px] overflow-hidden rounded-xl">
+              <div className="relative mx-auto aspect-[9/16] w-full max-w-[375px] overflow-hidden rounded-xl min-h-0">
                 <iframe
                   width="375"
                   height="812"
-                  className="absolute inset-0 h-full w-full"
-                  src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=1-3839&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&footer=false&starting-point-node-id=1%3A3839&show-proto-sidebar=0&embed-host=share"
+                  className="absolute inset-0 h-full w-full border-0"
+                  src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=1-3839&scaling=contain&content-scaling=responsive&page-id=0%3A1&footer=false&starting-point-node-id=1%3A3839&show-proto-sidebar=0&embed-host=share"
                   allowFullScreen
                 />
               </div>
@@ -290,12 +290,12 @@ flowchart TB
               <h3 className={`${TYPOGRAPHY.caption} tracking-[0.18em] uppercase text-slate-500`}>
                 V2_Simplifying AI interactions
               </h3>
-              <div className="relative mx-auto aspect-[9/16] w-full max-w-[375px] overflow-hidden rounded-xl">
+              <div className="relative mx-auto aspect-[9/16] w-full max-w-[375px] overflow-hidden rounded-xl min-h-0">
                 <iframe
                   width="375"
                   height="812"
-                  className="absolute inset-0 h-full w-full"
-                  src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=1-2034&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&footer=false&starting-point-node-id=1%3A2034&show-proto-sidebar=0&embed-host=share"
+                  className="absolute inset-0 h-full w-full border-0"
+                  src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=1-2034&scaling=contain&content-scaling=responsive&page-id=0%3A1&footer=false&starting-point-node-id=1%3A2034&show-proto-sidebar=0&embed-host=share"
                   allowFullScreen
                 />
               </div>
@@ -314,12 +314,12 @@ flowchart TB
             <h3 className={`${TYPOGRAPHY.caption} tracking-[0.18em] uppercase text-slate-500`}>
               Review feature prototype
             </h3>
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+            <div className="relative mx-auto w-full max-w-[375px] aspect-[9/16] overflow-hidden rounded-xl min-h-0">
               <iframe
                 width="375"
                 height="812"
-                className="absolute inset-0 h-full w-full"
-                src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=50-11300&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=50%3A11300&footer=false&show-proto-sidebar=0&embed-host=share"
+                className="absolute inset-0 h-full w-full border-0"
+                src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=50-11300&scaling=contain&content-scaling=responsive&page-id=0%3A1&starting-point-node-id=50%3A11300&footer=false&show-proto-sidebar=0&embed-host=share"
                 allowFullScreen
               />
             </div>
@@ -329,12 +329,12 @@ flowchart TB
             <h3 className={`${TYPOGRAPHY.caption} tracking-[0.18em] uppercase text-slate-500`}>
               Tenmin app prototype
             </h3>
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+            <div className="relative mx-auto w-full max-w-[375px] aspect-[9/16] overflow-hidden rounded-xl min-h-0">
               <iframe
                 width="375"
                 height="812"
-                className="absolute inset-0 h-full w-full"
-                src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=50-10548&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=50%3A10548&footer=false&show-proto-sidebar=0&embed-host=share"
+                className="absolute inset-0 h-full w-full border-0"
+                src="https://embed.figma.com/proto/H6KAQk9SnmOyC8yzbRAqYc/Tenmin?node-id=50-10548&scaling=contain&content-scaling=responsive&page-id=0%3A1&starting-point-node-id=50%3A10548&footer=false&show-proto-sidebar=0&embed-host=share"
                 allowFullScreen
               />
             </div>
