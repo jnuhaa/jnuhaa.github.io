@@ -164,7 +164,7 @@ export const PROJECTS = [
     type: 'WAVE',
     sector: 'Conversational AI Platform',
     projectType: 'App UX/UI',
-    projectBrief: 'How might we make the review feature fun and engaging so that users stay motivated to study consistently?',
+    projectBrief: 'How might we help language learners to form a habit of reviewing their vocabulary everyday?',
     description: 'Gamifying language learning with AI',
     timeline: '2025 — 2 MONTHS',
     color: '#9FFFFF',

@@ -45,9 +45,14 @@ const Tenmin = ({ project }) => (
         <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Project type</div>
         <div className={TYPOGRAPHY.body}>App UX/UI</div>
 
+        <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Description</div>
+          <div className={TYPOGRAPHY.body}>
+            Leveraging emotional design principles to “hook” language learners to the review feature.
+        </div>
+
         <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Brief</div>
         <div className={TYPOGRAPHY.body}>
-          How might we make the review feature fun and engaging so that users stay motivated to study consistently?
+            How might we help language learners to form a habit of reviewing their vocabulary everyday?
         </div>
 
         <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Summary</div>

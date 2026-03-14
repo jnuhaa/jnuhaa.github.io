@@ -35,6 +35,11 @@ const Nest = ({ project }) => (
             Service design concept for project “Playful Healthcare Design”
           </div>
 
+          <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Description</div>
+          <div className={TYPOGRAPHY.body}>
+            Empowering young cancer patients to regain autonomy and build emotional resilience.
+          </div>
+
           <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Brief</div>
           <div className={TYPOGRAPHY.body}>
             How can we give young cancer patients a safe space of autonomy that is stripped of them during hospitalization?
