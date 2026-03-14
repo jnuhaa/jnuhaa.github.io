@@ -20,7 +20,7 @@ const ProjectHUD = ({ project, variant = 'map' }) => {
 
   if (showMediaInsteadOfName) {
     return (
-      <div className="relative w-full h-full flex flex-col z-20 min-h-0 overflow-y-auto">
+      <div className="relative w-full h-full flex flex-col z-20 min-h-0 overflow-y-auto scrollbar-hide">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}

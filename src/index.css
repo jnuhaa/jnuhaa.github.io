@@ -16,6 +16,15 @@ img, video, picture, svg {
   user-select: none;
 }
 
+/* Hide scrollbars but keep scroll behavior (work section list view) */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Hide default play button overlay on autoplay/muted videos (iOS, Chrome, Safari) */
 video::-webkit-media-controls-start-playback-button,
 video::-webkit-media-controls-overlay-play-button,

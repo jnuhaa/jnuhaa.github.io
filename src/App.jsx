@@ -272,7 +272,7 @@ const App = () => {
           )}
           {isDesktop && !showMap && (
             <div
-              className={`w-full h-full p-6 sm:p-12 lg:p-24 overflow-y-auto animate-in fade-in slide-in-from-bottom-10 duration-700 ${BACKGROUND_COLOR.tailwind}`}
+              className={`w-full h-full p-6 sm:p-12 lg:p-24 overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-bottom-10 duration-700 ${BACKGROUND_COLOR.tailwind}`}
               onMouseLeave={() => {
                 if (listReturnTimeoutRef.current) clearTimeout(listReturnTimeoutRef.current);
                 listReturnTimeoutRef.current = setTimeout(() => {
