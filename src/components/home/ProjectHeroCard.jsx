@@ -76,9 +76,8 @@ const ProjectHeroCard = ({ project }) => {
       {isVideo ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
-            objectFit: config.objectFit ?? 'cover',
             ...mediaOverlayStyle,
             ...(mediaTransform
               ? { transform: mediaTransform, transformOrigin: 'center center' }
