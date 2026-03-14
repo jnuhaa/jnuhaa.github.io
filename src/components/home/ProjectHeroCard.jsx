@@ -8,7 +8,6 @@ import { getHeroMediaConfig, getHeroMediaTransform } from '../../data/projects.j
 
 const ProjectHeroCard = ({ project }) => {
   const videoRef = useRef(null);
-  const isIntersectingRef = useRef(false);
   const config = getHeroMediaConfig(project);
   const mediaSrc = config?.src;
   const isGif = mediaSrc?.toLowerCase().endsWith('.gif');
@@ -17,22 +16,16 @@ const ProjectHeroCard = ({ project }) => {
   useEffect(() => {
     if (!isVideo || !videoRef.current) return;
     const video = videoRef.current;
-    const play = () => {
-      if (isIntersectingRef.current) video.play().catch(() => {});
-    };
+    const play = () => video.play().catch(() => {});
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          isIntersectingRef.current = entry.isIntersecting;
-          if (entry.isIntersecting) play();
-          else video.pause();
-        });
+        entries.forEach((e) => (e.isIntersecting ? play() : video.pause()));
       },
-      { rootMargin: '50px', threshold: 0.1 }
+      { rootMargin: '200px', threshold: 0 }
     );
     observer.observe(video);
     video.addEventListener('canplay', play);
-    if (video.readyState >= 3) play();
+    if (video.readyState >= 2) play();
     return () => {
       observer.disconnect();
       video.removeEventListener('canplay', play);
@@ -83,8 +76,9 @@ const ProjectHeroCard = ({ project }) => {
       {isVideo ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full"
           style={{
+            objectFit: config.objectFit ?? 'cover',
             ...mediaOverlayStyle,
             ...(mediaTransform
               ? { transform: mediaTransform, transformOrigin: 'center center' }
