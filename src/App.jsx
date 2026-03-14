@@ -220,12 +220,11 @@ const App = () => {
           </AnimatePresence>
 
           {/* B. FAST DATA: The Content Layer */}
-          <div className="relative w-full max-w-xl min-h-[60vh] lg:min-h-0 lg:h-[60vh] z-10">
+          <div className={`relative w-full max-w-xl min-h-[60vh] lg:min-h-0 z-10 ${hudVariant === 'list' && activeProject ? 'lg:h-[70vh]' : 'lg:h-[60vh]'}`}>
             <AnimatePresence mode="wait">
-              
               {!activeProject ? (
-                // STATE 1: IDLE (Blueprint layout - coherent with ProjectHUD)
-                <motion.div 
+                // STATE 1: IDLE — fade in/out for enter/exit
+                <motion.div
                   key="intro"
                   initial={{ opacity: 0, filter: "blur(5px)" }}
                   animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -235,9 +234,9 @@ const App = () => {
                   <TypewriterIntro />
                 </motion.div>
               ) : (
-                // STATE 2: ACTIVE — ProjectHUD (list: media replaces name; map: full HUD)
-                <motion.div 
-                  key={`project-${activeProject.id}-${viewMode}`}
+                // STATE 2: ACTIVE — single key so project switches are instant; fade only on enter/exit
+                <motion.div
+                  key="active"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}

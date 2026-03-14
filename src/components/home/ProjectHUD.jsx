@@ -20,12 +20,12 @@ const ProjectHUD = ({ project, variant = 'map' }) => {
 
   if (showMediaInsteadOfName) {
     return (
-      <div className="relative w-full h-full flex flex-col z-20 min-h-0 overflow-y-auto scrollbar-hide">
+      <div className="relative w-full h-full flex flex-col gap-y-12 lg:gap-y-16 xl:gap-y-20 z-20 min-h-0 overflow-y-auto scrollbar-hide">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "circOut" }}
-          className="flex-shrink-0 pt-4 lg:pt-5 xl:pt-6 pr-4 pb-3 lg:pb-4 xl:pb-6 relative"
+          className="flex-shrink-0 pt-4 lg:pt-5 xl:pt-6 pr-4 pb-0 relative"
         >
           <div className="flex items-baseline gap-x-4 invisible pointer-events-none" aria-hidden>
             <div className="flex items-baseline gap-x-3 flex-shrink-0">
@@ -61,7 +61,7 @@ const ProjectHUD = ({ project, variant = 'map' }) => {
           </div>
         </motion.div>
 
-        <div className="flex-1 flex items-center justify-center min-h-0 px-4 py-3 lg:py-4 xl:py-6">
+        <div className="flex-1 flex items-center justify-center min-h-0 px-4">
           <div className="w-full max-w-2xl">
             {rectReady ? (
               <ListViewMediaWindow project={project} instant />
@@ -75,7 +75,7 @@ const ProjectHUD = ({ project, variant = 'map' }) => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "circOut" }}
-          className="flex-shrink-0 flex justify-end pt-3 lg:pt-4 xl:pt-6 pb-4 lg:pb-5 xl:pb-6 pr-4 relative"
+          className="flex-shrink-0 flex justify-end pt-0 pb-4 lg:pb-5 xl:pb-6 pr-4 relative"
         >
           <div className="flex flex-col items-end invisible pointer-events-none" aria-hidden>
             <div className="flex items-baseline gap-x-4">
