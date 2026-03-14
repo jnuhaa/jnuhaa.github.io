@@ -2,17 +2,40 @@
  * Shared project hero section. Renders the subpage thumbnail (hero) using
  * config from project.heroMedia. Same config drives list view via getHeroMediaConfig.
  */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { getHeroMediaConfig, getHeroMediaTransform } from '../data/projects.js';
 
 const ProjectHero = ({ project, titleOverride }) => {
+  const videoRef = useRef(null);
   const config = getHeroMediaConfig(project);
-  if (!config) return null;
-
-  const title = titleOverride ?? config.title ?? project?.name ?? '';
+  const title = titleOverride ?? config?.title ?? project?.name ?? '';
   const mediaTransform = getHeroMediaTransform(project);
-  const isGif = config.src?.toLowerCase().endsWith('.gif');
-  const isVideo = !isGif && /\.(mp4|webm|ogg)$/i.test(config.src ?? '');
+  const isGif = config?.src?.toLowerCase().endsWith('.gif');
+  const isVideo = !!config && !isGif && /\.(mp4|webm|ogg)$/i.test(config.src ?? '');
+
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+    const video = videoRef.current;
+    const play = () => video.play().catch(() => {});
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) play();
+          else video.pause();
+        });
+      },
+      { rootMargin: '100px', threshold: 0.1 }
+    );
+    observer.observe(video);
+    video.addEventListener('canplay', play);
+    if (video.readyState >= 3) play();
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('canplay', play);
+    };
+  }, [isVideo, config?.src]);
+
+  if (!config) return null;
 
   const mediaOverlayStyle =
     config.mediaOverlay && config.mediaOverlay !== 'none'
@@ -39,6 +62,7 @@ const ProjectHero = ({ project, titleOverride }) => {
       )}
       {isVideo ? (
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             ...mediaOverlayStyle,
@@ -51,6 +75,7 @@ const ProjectHero = ({ project, titleOverride }) => {
           loop
           muted
           playsInline
+          preload="auto"
         />
       ) : (
         <img

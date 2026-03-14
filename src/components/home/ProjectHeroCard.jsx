@@ -8,7 +8,37 @@ import { getHeroMediaConfig, getHeroMediaTransform } from '../../data/projects.j
 
 const ProjectHeroCard = ({ project }) => {
   const videoRef = useRef(null);
+  const isIntersectingRef = useRef(false);
   const config = getHeroMediaConfig(project);
+  const mediaSrc = config?.src;
+  const isGif = mediaSrc?.toLowerCase().endsWith('.gif');
+  const isVideo = !!config && !isGif && /\.(mp4|webm|ogg)$/i.test(mediaSrc ?? '');
+
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+    const video = videoRef.current;
+    const play = () => {
+      if (isIntersectingRef.current) video.play().catch(() => {});
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isIntersectingRef.current = entry.isIntersecting;
+          if (entry.isIntersecting) play();
+          else video.pause();
+        });
+      },
+      { rootMargin: '50px', threshold: 0.1 }
+    );
+    observer.observe(video);
+    video.addEventListener('canplay', play);
+    if (video.readyState >= 3) play();
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('canplay', play);
+    };
+  }, [isVideo, mediaSrc]);
+
   if (!config) {
     const bgColor = project?.color ?? '#94a3b8';
     return (
@@ -23,32 +53,6 @@ const ProjectHeroCard = ({ project }) => {
       </Link>
     );
   }
-
-  const mediaSrc = config.src;
-  const isGif = mediaSrc?.toLowerCase().endsWith('.gif');
-  const isVideo = !isGif && /\.(mp4|webm|ogg)$/i.test(mediaSrc ?? '');
-  const videoSrc = config.src;
-
-  useEffect(() => {
-    if (!isVideo || !videoRef.current) return;
-    const video = videoRef.current;
-    const play = () => video.play().catch(() => {});
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) play();
-          else video.pause();
-        });
-      },
-      { rootMargin: '50px', threshold: 0.1 }
-    );
-    observer.observe(video);
-    video.addEventListener('loadeddata', play);
-    return () => {
-      observer.disconnect();
-      video.removeEventListener('loadeddata', play);
-    };
-  }, [isVideo, videoSrc]);
 
   const mediaOverlayStyle =
     config.mediaOverlay && config.mediaOverlay !== 'none'
@@ -91,6 +95,7 @@ const ProjectHeroCard = ({ project }) => {
           loop
           muted
           playsInline
+          preload="auto"
         />
       ) : (
         <img

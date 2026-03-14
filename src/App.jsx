@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HOVER_LEAVE_DELAY_MS, BACKGROUND_COLOR } from './constants.js';
-import { PROJECTS, getProjectBySlug } from './data/projects.js';
+import { PROJECTS } from './data/projects.js';
 import ProjectPage from './pages/ProjectPage.jsx';
 import Impressum from './pages/Impressum.jsx';
 import CustomCursor from './components/CustomCursor.jsx';
@@ -166,11 +166,9 @@ const App = () => {
   // Fonts loaded via index.html (Aspekta from Fontshare)
 
   const showDotCursor = !isTouch;
-  const currentProjectSlug = isProjectPage ? location.pathname.replace(/^\/project\//, '').replace(/\/$/, '') : null;
-  const currentProject = currentProjectSlug ? getProjectBySlug(currentProjectSlug) : null;
-  const cursorTintColor = (activeProject && navSection === 'work' && !isProjectPage && activeProject.cursorColor)
+  const cursorTintColor = activeProject && navSection === 'work' && !isProjectPage && activeProject.cursorColor
     ? activeProject.cursorColor
-    : (currentProject?.cursorColor ?? null);
+    : null;
 
   return (
     <div

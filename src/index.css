@@ -15,3 +15,13 @@ img, video, picture, svg {
   -webkit-user-select: none;
   user-select: none;
 }
+
+/* Hide default play button overlay on autoplay/muted videos (iOS, Chrome, Safari) */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+}
