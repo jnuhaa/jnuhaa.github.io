@@ -56,7 +56,7 @@ export const PROJECTS = [
     projectBrief: 'How can we give young cancer patients a safe space of autonomy that is stripped of them during hospitalization?',
     description: 'Giving young cancer patients a safe space of autonomy',
     timeline: '2024 — 4 MONTHS',
-    color: '#fb923c',
+    color: '#FB923C',
     cursorColor: '#FF4800',
     pos: [-2.8, 0.4, 1.2],
     complexity: 1
@@ -70,8 +70,8 @@ export const PROJECTS = [
       mediaOverlay: 'soft-light',
       background: null,
       backgroundOverlay: null,
-      backgroundColor: '#7c3aed',
-      titleColor: '#ffffff',
+      backgroundColor: '#7C3AED',
+      titleColor: '#FFFFFF',
       titleBlendMode: 'screen',
       scale: 1.25,
       objectFit: 'contain'
@@ -83,8 +83,8 @@ export const PROJECTS = [
     projectBrief: 'What is Next for the N series?',
     description: 'Reimagining the role of Hyundai pixels',
     timeline: '2024 — 4 WEEKS',
-    color: '#7c3aed',
-    cursorColor: '#FF00FF',
+    color: '#7C3AED',
+    cursorColor: '#5E00FF',
     pos: [-0.5, -0.8, 2.8],
     complexity: 1
   },
@@ -97,7 +97,7 @@ export const PROJECTS = [
       mediaOverlay: 'screen',
       background: null,
       backgroundOverlay: null,
-      backgroundColor: '#3b82f6',
+      backgroundColor: '#3B82F6',
       titleColor: '#FFFFFF',
       titleBlendMode: 'screen',
       heroTitle: 'DNA Evolution',
@@ -111,8 +111,8 @@ export const PROJECTS = [
     projectBrief: 'How can we use AI to generate a "New Normal" of design aesthetics, appeal to our senses in a multisensory way?',
     description: 'Hyper-personalizing automotive UX',
     timeline: '2023, 2024 — 3 MONTHS',
-    color: '#3b82f6',
-    cursorColor: '#DDFF00',
+    color: '#3B82F6',
+    cursorColor: '#00B4FF',
     pos: [3.2, -0.5, 0.8],
     complexity: 1
   },
@@ -139,8 +139,8 @@ export const PROJECTS = [
     projectBrief: 'How can we build trust of professors and students in AI-assisted content creation and tutoring?',
     description: 'Bringing AI to higher education',
     timeline: '2025, 2026 — 4 MONTHS, ONGOING',
-    color: '#60a5fa',
-    cursorColor: '#4000FF',
+    color: '#60A5FA',
+    cursorColor: '#0E00FF',
     pos: [2.4, 1.6, -1.0],
     complexity: 5
   },
@@ -167,8 +167,8 @@ export const PROJECTS = [
     projectBrief: 'How might we make the review feature fun and engaging so that users stay motivated to study consistently?',
     description: 'Gamifying language learning with AI',
     timeline: '2025 — 2 MONTHS',
-    color: '#c9ffff',
-    cursorColor: '#00FFCC',
+    color: '#9FFFFF',
+    cursorColor: '#00CFFF',
     pos: [0.2, 1.8, -2.8],
     complexity: 1
   }
