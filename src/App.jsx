@@ -182,8 +182,8 @@ const App = () => {
     const isHovering = !!activeProjectHover;
     const tintColor = isHovering ? '#ffffff' : '#0f172a';
     const style = isHovering
-      ? { border: `2px solid ${activeProject?.cursorColor ?? '#0f172a'}` }
-      /* ? { border: '2px solid #0f172a' } */
+      /*  ? { border: `2px solid ${activeProject?.cursorColor ?? '#0f172a'}` } */
+      ? { border: '2px solid #0f172a' } 
       : undefined;
     return { showDot, tintColor, style };
   };
