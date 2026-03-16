@@ -127,7 +127,7 @@ const DNAEvolution = ({ project }) => (
 
           <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Description</div>
           <div className={TYPOGRAPHY.body}>
-            Hyper-personalising automotive user experience with an AI system that allows the car to imitate evolution
+            Hyper-personalizing automotive user experience with an AI system that allows the car to imitate evolution
             and optimize its form to fulfil the driver’s changing needs.
           </div>
 

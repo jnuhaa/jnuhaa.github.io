@@ -48,7 +48,7 @@ const OneTutor = ({ project }) => (
           <div className={TYPOGRAPHY.body}>Web UX/UI, Product Strategy</div>
 
           <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Description</div>
-          <div className={TYPOGRAPHY.body}>Bringing AI to higher education</div>
+          <div className={TYPOGRAPHY.body}>Bringing AI to higher education.</div>
 
           <div className={`${TYPOGRAPHY.caption} tracking-[0.18em]`}>Brief</div>
           <div className={TYPOGRAPHY.body}>

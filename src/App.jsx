@@ -165,10 +165,34 @@ const App = () => {
 
   // Fonts loaded via index.html (Aspekta from Fontshare)
 
-  const showDotCursor = !isTouch;
-  const cursorTintColor = activeProject && navSection === 'work' && !isProjectPage && activeProject.cursorColor
-    ? activeProject.cursorColor
-    : null;
+  const isProjectHover = !!(activeProject && navSection === 'work' && !isProjectPage);
+
+  // Cursor appearance strategies. Switch between them by changing getCursorAppearance.
+  const cursorAppearanceTintByProjectColor = ({ isTouchDevice, activeProjectHover }) => {
+    const showDot = !isTouchDevice;
+    const tintColor =
+      activeProjectHover && activeProject?.cursorColor
+        ? activeProject.cursorColor
+        : null;
+    return { showDot, tintColor, style: undefined };
+  };
+
+  const cursorAppearanceWhiteWithSlateOutline = ({ isTouchDevice, activeProjectHover }) => {
+    const showDot = !isTouchDevice;
+    const isHovering = !!activeProjectHover;
+    const tintColor = isHovering ? '#ffffff' : '#0f172a';
+    const style = isHovering
+      ? { border: `2px solid ${activeProject?.cursorColor ?? '#0f172a'}` }
+      /* ? { border: '2px solid #0f172a' } */
+      : undefined;
+    return { showDot, tintColor, style };
+  };
+
+  // Toggle between strategies here:
+  const getCursorAppearance = cursorAppearanceWhiteWithSlateOutline;
+
+  const { showDot: showDotCursor, tintColor: cursorTintColor, style: cursorStyle } =
+    getCursorAppearance({ isTouchDevice: isTouch, activeProjectHover: isProjectHover });
 
   return (
     <div
@@ -181,6 +205,7 @@ const App = () => {
           mousePos={mousePos}
           showDot={showDotCursor}
           tintColor={cursorTintColor}
+          style={cursorStyle}
         />
       )}
 
