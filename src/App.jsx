@@ -56,7 +56,7 @@ const DESKTOP_MEDIA = '(min-width: 1024px)';
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [viewMode, setViewMode] = useState('map');
+  const [viewMode, setViewMode] = useState('list');
   const [activeProject, setActiveProject] = useState(null);
   const [mouseOverObject, setMouseOverObject] = useState(false);
   const listReturnTimeoutRef = useRef(null);
