@@ -192,7 +192,6 @@ const Nest = ({ project }) => (
               The brainstorming process began with a focus on soft, round shapes, contrasting the sharp, cold forms commonly associated with hospitals, such as syringes and medical equipment. This exploration inspired the concept of a “Nest”—a cozy “safe space” designed to offer comfort and emotional support for patients. The Nest is a tent-like structure mounted on the wall above the patient’s bed, easily deployable by turning a lever. This creates a private and inviting space without disrupting the shared hospital environment. To overcome the challenge of designing a practical yet unobtrusive solution, we drew inspiration from collapsible, origami-like designs. After multiple iterations, we developed a structure that is simple to set up, seamlessly integrates into hospital rooms, and provides ample coverage and comfort.
             </p>
             <div className="relative w-full rounded-xl overflow-hidden bg-white">
-              <img src="/media/nest-14.png" alt="Form exploration" className="block w-full h-auto" />
               <img
                 src="/media/nest-hero-banner-bg.png"
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
